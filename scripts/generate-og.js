@@ -272,7 +272,7 @@ async function generateOG() {
       </text>
 
       <text x="560" y="30" text-anchor="end" class="sans" font-size="11" font-weight="500" letter-spacing="1.5" fill="#caa568">
-        mahathi-weds-gopinath.vercel.app
+        mahathi-weds-gopinath.invitingyou.top
       </text>
     </g>
   </svg>

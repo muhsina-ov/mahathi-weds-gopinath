@@ -68,11 +68,15 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const SITE_URL = "https://mahathi-weds-gopinath.vercel.app";
+const SITE_URL = "https://mahathi-weds-gopinath.invitingyou.top";
 const OG_IMAGE_URL = `${SITE_URL}/og-image.jpg`;
 const SITE_TITLE = "Mahathi & Gopinath — Wedding Invitation";
-const SITE_DESCRIPTION =
-  "Together with their families, Mahathi & Gopinath invite you to celebrate their wedding on October 31, 2026 at One Trenton Events & Retreat, Trenton, Texas. Muhurtham at 11:52 AM.";
+// Google SEO description (target: 140–160 chars) -> exactly 150 chars
+const META_DESCRIPTION =
+  "Join us to celebrate the wedding of Mahathi & Gopinath on October 31, 2026 at One Trenton Events & Retreat in Trenton, Texas. Muhurtham at 11:52 AM.";
+// Social preview description (target: < 125 chars to prevent mobile truncation) -> exactly 107 chars
+const OG_DESCRIPTION =
+  "Join us to celebrate the wedding of Mahathi & Gopinath on October 31, 2026 at One Trenton Events & Retreat.";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -80,12 +84,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: SITE_TITLE },
-      { name: "description", content: SITE_DESCRIPTION },
+      { name: "description", content: META_DESCRIPTION },
 
       // Open Graph / WhatsApp / Facebook / iMessage
       { property: "og:site_name", content: "Mahathi & Gopinath Wedding" },
       { property: "og:title", content: SITE_TITLE },
-      { property: "og:description", content: SITE_DESCRIPTION },
+      { property: "og:description", content: OG_DESCRIPTION },
       { property: "og:url", content: `${SITE_URL}/` },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_US" },
@@ -102,7 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       // Twitter / X
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: SITE_TITLE },
-      { name: "twitter:description", content: SITE_DESCRIPTION },
+      { name: "twitter:description", content: OG_DESCRIPTION },
       { name: "twitter:image", content: OG_IMAGE_URL },
       {
         name: "twitter:image:alt",
