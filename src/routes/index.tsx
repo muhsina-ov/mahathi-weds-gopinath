@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 import { OpeningSequence } from "@/components/OpeningSequence";
-import { InteractivePortrait } from "@/components/InteractivePortrait";
 import { PalaceReveal } from "@/components/PalaceReveal";
 import { Reveal } from "@/components/Reveal";
 import { ScratchRevealDate } from "@/components/ScratchRevealDate";
@@ -21,7 +20,7 @@ import { HeroParallax } from "@/components/sections/HeroParallax";
 import { LetterH1 } from "@/components/sections/LetterH1";
 import { QuoteScrub } from "@/components/sections/QuoteScrub";
 import { SectionHeader } from "@/components/sections/SectionHeader";
-import { StoryTimeline } from "@/components/sections/StoryTimeline";
+import { Registry } from "@/components/sections/Registry";
 import { VenueMap } from "@/components/sections/VenueMap";
 import { ScrollTrigger, useGSAP } from "@/lib/motion";
 
@@ -81,10 +80,10 @@ const SECTIONS: SectionDef[] = [
   { id: "hero", label: "Hero" },
   { id: "blessing", label: "Blessing" },
   { id: "countdown", label: "Countdown" },
-  { id: "story", label: "Story" },
   { id: "celebrations", label: "Events" },
   { id: "venue", label: "Venue" },
   { id: "accommodations", label: "Stay" },
+  { id: "registry", label: "Registry" },
 ];
 
 function Invitation() {
@@ -191,11 +190,6 @@ function Invitation() {
         </div>
       </section>
 
-      {/* Story — gold thread + 3 selective photos */}
-      <StoryTimeline />
-
-      <InteractivePortrait />
-
       {/* Diya ritual — touch-and-hold to light, then 12 lanterns rise */}
       <DiyaCeremony />
 
@@ -237,6 +231,9 @@ function Invitation() {
 
       {/* Accommodations — 5 curated Airbnbs nearby */}
       <Accommodations />
+
+      {/* Registry — Gifts & Blessings */}
+      <Registry />
 
       <footer className="relative mt-20 overflow-hidden border-t border-gold/15 px-6 pb-12 pt-28 text-center">
         <div
