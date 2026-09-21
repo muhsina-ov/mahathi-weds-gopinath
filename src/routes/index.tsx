@@ -82,8 +82,8 @@ const SECTIONS: SectionDef[] = [
   { id: "countdown", label: "Countdown" },
   { id: "celebrations", label: "Events" },
   { id: "venue", label: "Venue" },
-  { id: "accommodations", label: "Stay" },
   { id: "registry", label: "Registry" },
+  { id: "accommodations", label: "Stay" },
 ];
 
 function Invitation() {
@@ -162,7 +162,7 @@ function Invitation() {
           <Reveal delay={200}>
             <div className="mx-auto mt-8 w-24 gold-rule" />
             <p className="mt-6 text-sm leading-loose text-muted-foreground">
-              With the blessings of Shri &amp; Smt. Raghav Menon and Shri &amp; Smt. Devang Sharma,
+              With the blessings of Ashok and Sneha &amp; Durga Rao and Ramadevi,
               we invite you to share in the joy of our wedding.
             </p>
           </Reveal>
@@ -229,11 +229,11 @@ function Invitation() {
         </Reveal>
       </section>
 
+      {/* Registry — Gifts & Blessings (Moved above Accommodations) */}
+      <Registry />
+
       {/* Accommodations — 5 curated Airbnbs nearby */}
       <Accommodations />
-
-      {/* Registry — Gifts & Blessings */}
-      <Registry />
 
       <footer className="relative mt-20 overflow-hidden border-t border-gold/15 px-6 pb-12 pt-28 text-center">
         <div

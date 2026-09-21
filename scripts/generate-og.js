@@ -7,6 +7,14 @@ const height = 630;
 
 async function generateOG() {
   const publicDir = path.resolve("public");
+  const outputJpg = path.join(publicDir, "og-image.jpg");
+  
+  // If og-image.jpg already exists from custom wedding card upload, keep it
+  if (fs.existsSync(outputJpg)) {
+    const stats = fs.statSync(outputJpg);
+    console.log(`Using existing og-image.jpg (${(stats.size / 1024).toFixed(1)} KB)`);
+    return;
+  }
   const handsPath = path.join(publicDir, "wedding-hands.jpg");
 
   // Read and prepare couple hands photo in an arched mask
@@ -320,7 +328,6 @@ async function generateOG() {
   }).composite(composites);
 
   // Save high-quality, lightweight JPG for WhatsApp, Facebook, iMessage
-  const outputJpg = path.join(publicDir, "og-image.jpg");
   await finalImage
     .clone()
     .jpeg({ quality: 90, mozjpeg: true })

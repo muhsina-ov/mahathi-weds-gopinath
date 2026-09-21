@@ -1,11 +1,19 @@
 import { useRef, useState } from "react";
-import { CalendarPlus } from "lucide-react";
+import { CalendarPlus, MessageCircle, Phone, Check, Copy } from "lucide-react";
 
 import frameAsset from "@/assets/r1.png.asset.json";
 import coupleAsset from "@/assets/r2.png.asset.json";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { gsap, useGSAP, useMotionOk } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
@@ -25,37 +33,32 @@ type Event = {
 
 const EVENTS: Event[] = [
   {
-    name: "Mehendi & Sangeet",
-    date: "30 October 2026",
-    time: "5:30 PM onwards",
-    place: "One Trenton Events & Retreat Grounds",
-    note: "An evening of festive melodies, henna designs, celebration, and joyous dances.",
-    attire: "Traditional Festive / Colorful Ethnic",
-    start: "2026-10-30T17:30:00-05:00",
-    end: "2026-10-30T22:00:00-05:00",
-    slug: "mehendi-sangeet",
-  },
-  {
     name: "Wedding Ceremony",
     date: "31 October 2026",
     time: "Muhurtham 11:52 AM",
     place: "One Trenton Events & Retreat Mandap",
-    note: "Sacred vows, auspicious rituals, and saat phere surrounded by divine blessings and family.",
+    note: "Sacred vows, auspicious rituals, and saat phere surrounded by divine blessings, family, and loved ones.",
     attire: "Traditional Indian Attire",
     start: "2026-10-31T10:30:00-05:00",
-    end: "2026-10-31T13:30:00-05:00",
+    end: "2026-10-31T14:30:00-05:00",
     slug: "wedding-ceremony",
   },
+];
+
+const RSVP_CONTACTS = [
   {
-    name: "Reception & Dinner",
-    date: "31 October 2026",
-    time: "6:30 PM onwards",
-    place: "The Grand Pavilion, One Trenton",
-    note: "An unforgettable evening of fine dining, heartfelt toasts, music, and celebration.",
-    attire: "Traditional / Formal Indian Attire",
-    start: "2026-10-31T18:30:00-05:00",
-    end: "2026-10-31T23:00:00-05:00",
-    slug: "reception",
+    name: "Gopinath",
+    phone: "+1 (779) 276-2757",
+    rawPhone: "17792762757",
+    whatsappUrl:
+      "https://wa.me/17792762757?text=Hi%20Gopinath,%20I%20would%20love%20to%20RSVP%20for%20the%20Wedding%20Ceremony%20of%20Mahathi%20%26%20Gopinath!",
+  },
+  {
+    name: "Family / RSVP Desk",
+    phone: "+1 (513) 545-6104",
+    rawPhone: "15135456104",
+    whatsappUrl:
+      "https://wa.me/15135456104?text=Hi,%20I%20would%20love%20to%20RSVP%20for%20the%20Wedding%20Ceremony%20of%20Mahathi%20%26%20Gopinath!",
   },
 ];
 
@@ -91,6 +94,14 @@ function icsHref(e: Event) {
 }
 
 export function Celebrations() {
+  const [copiedPhone, setCopiedPhone] = useState<string | null>(null);
+
+  const copyNumber = (phone: string) => {
+    void navigator.clipboard.writeText(phone);
+    setCopiedPhone(phone);
+    setTimeout(() => setCopiedPhone(null), 2500);
+  };
+
   return (
     <section
       data-section="celebrations"
@@ -105,17 +116,122 @@ export function Celebrations() {
       <div className="absolute inset-0 bg-deep/75" />
       <div className="relative mx-auto max-w-4xl">
         <SectionHeader
-          eyebrow="The Celebrations"
-          title="Four evenings, woven together."
+          eyebrow="The Celebration"
+          title="The Sacred Union"
           className="mx-auto max-w-2xl"
         />
-        <div className="mt-16 grid gap-6 sm:grid-cols-2">
+        <div className="mx-auto mt-16 max-w-2xl">
           {EVENTS.map((e, i) => (
             <Reveal key={e.name} delay={i * 120}>
               <EventCard event={e} />
             </Reveal>
           ))}
         </div>
+
+        {/* RSVP Section */}
+        <Reveal delay={250}>
+          <div className="mx-auto mt-12 max-w-2xl rounded-2xl border border-gold/30 bg-deep/60 p-6 sm:p-8 backdrop-blur-sm text-center">
+            <div className="mx-auto mb-4 grid h-12 w-12 place-items-center rounded-full border border-gold/40 bg-gold/10 text-gold-soft">
+              <MessageCircle className="h-6 w-6 stroke-[1.5]" />
+            </div>
+            <h3 className="font-display text-2xl sm:text-3xl gold-text">
+              RSVP for Wedding
+            </h3>
+            <p className="mx-auto mt-2 max-w-lg text-xs sm:text-sm leading-relaxed text-foreground/80">
+              Please confirm your presence via WhatsApp so we can gladly prepare for your warm welcome and hospitality.
+            </p>
+
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-2 rounded-full border border-gold/60 bg-gradient-to-r from-gold/25 via-gold/15 to-gold/25 px-6 py-3 text-xs uppercase tracking-[0.25em] font-medium text-gold transition-all duration-300 hover:border-gold hover:bg-gold hover:text-deep hover:shadow-[0_0_25px_oklch(0.86_0.12_84/0.35)] cursor-pointer"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    RSVP via WhatsApp
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="border-gold/35 bg-deep text-foreground sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle className="font-display text-2xl gold-text">
+                      RSVP for Wedding
+                    </DialogTitle>
+                    <DialogDescription className="text-xs text-muted-foreground">
+                      Reach out directly on WhatsApp to let us know you'll be joining our special day!
+                    </DialogDescription>
+                  </DialogHeader>
+
+                  <div className="mt-4 space-y-4">
+                    {RSVP_CONTACTS.map((contact) => (
+                      <div
+                        key={contact.rawPhone}
+                        className="rounded-xl border border-gold/25 bg-card/60 p-4 transition-colors hover:border-gold/50"
+                      >
+                        <div className="flex items-center justify-between gap-3">
+                          <div>
+                            <p className="text-xs font-semibold uppercase tracking-wider text-gold-soft">
+                              {contact.name}
+                            </p>
+                            <p className="font-display text-base text-foreground mt-0.5">
+                              {contact.phone}
+                            </p>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => copyNumber(contact.phone)}
+                            className="inline-flex items-center gap-1.5 rounded-md border border-gold/30 px-2.5 py-1 text-[0.68rem] text-gold-soft hover:bg-gold/10 transition-colors"
+                            title="Copy Phone Number"
+                          >
+                            {copiedPhone === contact.phone ? (
+                              <>
+                                <Check className="h-3 w-3 text-emerald-400" />
+                                <span className="text-emerald-400">Copied</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="h-3 w-3" />
+                                <span>Copy</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
+
+                        <div className="mt-3 flex gap-2">
+                          <a
+                            href={contact.whatsappUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#25D366]/20 border border-[#25D366]/40 px-3 py-2 text-xs font-medium text-[#25D366] transition-all hover:bg-[#25D366] hover:text-black"
+                          >
+                            <MessageCircle className="h-3.5 w-3.5" />
+                            Chat on WhatsApp
+                          </a>
+                          <a
+                            href={`tel:${contact.rawPhone}`}
+                            className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gold/30 px-3 py-2 text-xs text-gold-soft hover:bg-gold/10 transition-colors"
+                          >
+                            <Phone className="h-3.5 w-3.5" />
+                            Call
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </DialogContent>
+              </Dialog>
+
+              <a
+                href="https://wa.me/17792762757?text=Hi%20Gopinath,%20I%20would%20love%20to%20RSVP%20for%20the%20Wedding%20Ceremony%20of%20Mahathi%20%26%20Gopinath!"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-gold/35 bg-gold/5 px-5 py-3 text-xs tracking-wider text-gold-soft hover:bg-gold/15 transition-colors"
+              >
+                <span>Direct WhatsApp: +1 (779) 276-2757</span>
+              </a>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
