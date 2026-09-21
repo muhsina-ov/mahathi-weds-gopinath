@@ -2,7 +2,7 @@ import { useRef } from "react";
 
 import { gsap } from "gsap";
 
-import frameAsset from "@/assetshttps://media.invitestory.in/diya-haveli/last_frame.jpeg.asset.json";
+import frameAsset from "@/assets/last_frame.jpeg.asset.json";
 import { useGSAP, useMotionOk } from "@/lib/motion";
 
 /**

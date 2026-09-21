@@ -1,4 +1,4 @@
-import frameAsset from "@/assetshttps://media.invitestory.in/diya-haveli/r1.png.asset.json";
+import frameAsset from "@/assets/r1.png.asset.json";
 
 /**
  * A small https://media.invitestory.in/diya-haveli/r1.png thumbnail drifting in the bottom-right of the section.

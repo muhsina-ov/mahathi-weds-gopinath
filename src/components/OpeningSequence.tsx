@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import coverAsset from "@/assetshttps://media.invitestory.in/diya-haveli/r3.png.asset.json";
-import openerAsset from "@/assetshttps://media.invitestory.in/diya-haveli/openr.mp4.asset.json";
-import lotusAsset from "@/assetshttps://media.invitestory.in/diya-haveli/lotus.mp4.asset.json";
-import lastFrameAsset from "@/assetshttps://media.invitestory.in/diya-haveli/last_frame.jpeg.asset.json";
+import coverAsset from "@/assets/r3.png.asset.json";
+import openerAsset from "@/assets/openr.mp4.asset.json";
+import lotusAsset from "@/assets/lotus.mp4.asset.json";
+import lastFrameAsset from "@/assets/last_frame.jpeg.asset.json";
 
 import { CoverZoom } from "./CoverZoom";
 import { HoldToOpen } from "./HoldToOpen";

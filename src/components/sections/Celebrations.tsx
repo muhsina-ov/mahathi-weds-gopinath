@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { CalendarPlus } from "lucide-react";
 
-import frameAsset from "@/assetshttps://media.invitestory.in/diya-haveli/r1.png.asset.json";
-import coupleAsset from "@/assetshttps://media.invitestory.in/diya-haveli/r2.png.asset.json";
+import frameAsset from "@/assets/r1.png.asset.json";
+import coupleAsset from "@/assets/r2.png.asset.json";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
