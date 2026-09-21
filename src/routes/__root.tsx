@@ -68,19 +68,52 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const SITE_URL = "https://mahathi-weds-gopinath.vercel.app";
+const OG_IMAGE_URL = `${SITE_URL}/og-image.jpg`;
+const SITE_TITLE = "Mahathi & Gopinath — Wedding Invitation";
+const SITE_DESCRIPTION =
+  "Together with their families, Mahathi & Gopinath invite you to celebrate their wedding on October 31, 2026 at One Trenton Events & Retreat, Trenton, Texas. Muhurtham at 11:52 AM.";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Mahathi & Gopinath — Wedding Invitation" },
-      { name: "description", content: "A digital wedding invitation for Mahathi and Gopinath." },
-      { property: "og:title", content: "Mahathi & Gopinath — Wedding Invitation" },
-      { property: "og:description", content: "A digital wedding invitation for Mahathi and Gopinath." },
+      { title: SITE_TITLE },
+      { name: "description", content: SITE_DESCRIPTION },
+
+      // Open Graph / WhatsApp / Facebook / iMessage
+      { property: "og:site_name", content: "Mahathi & Gopinath Wedding" },
+      { property: "og:title", content: SITE_TITLE },
+      { property: "og:description", content: SITE_DESCRIPTION },
+      { property: "og:url", content: `${SITE_URL}/` },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:image", content: OG_IMAGE_URL },
+      { property: "og:image:secure_url", content: OG_IMAGE_URL },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      {
+        property: "og:image:alt",
+        content: "Mahathi & Gopinath Wedding Invitation - October 31, 2026 at One Trenton Events & Retreat",
+      },
+
+      // Twitter / X
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: SITE_TITLE },
+      { name: "twitter:description", content: SITE_DESCRIPTION },
+      { name: "twitter:image", content: OG_IMAGE_URL },
+      {
+        name: "twitter:image:alt",
+        content: "Mahathi & Gopinath Wedding Invitation - October 31, 2026",
+      },
+      { name: "twitter:url", content: `${SITE_URL}/` },
     ],
     links: [
+      { rel: "canonical", href: `${SITE_URL}/` },
+      { rel: "image_src", href: OG_IMAGE_URL },
+      { rel: "preload", as: "image", href: "/og-image.jpg" },
       {
         rel: "stylesheet",
         href: appCss,
