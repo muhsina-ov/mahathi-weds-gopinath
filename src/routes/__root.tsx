@@ -69,7 +69,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 const SITE_URL = "https://mahathi-weds-gopinath.invitingyou.top";
-const OG_IMAGE_URL = `${SITE_URL}/og-image.jpg`;
+const OG_IMAGE_URL =
+  "https://raw.githubusercontent.com/muhsina-ov/mahathi-weds-gopinath/main/public/og-image.jpg";
 const SITE_TITLE = "Mahathi & Gopinath — Wedding Invitation";
 // Google SEO description (target: 140–160 chars) -> exactly 150 chars
 const META_DESCRIPTION =

@@ -263,15 +263,23 @@ async function generateOG() {
       </text>
     </g>
 
+    <!-- Call to Action Button (Resolves "Image is missing conversion text" warning) -->
+    <g transform="translate(535, 472)">
+      <rect x="0" y="0" width="225" height="34" rx="17" fill="url(#goldText)" filter="url(#goldShadow)" />
+      <text x="112" y="22" text-anchor="middle" class="sans" font-size="11" font-weight="700" letter-spacing="2" fill="#150508">
+        VIEW INVITATION ↗
+      </text>
+    </g>
+
     <!-- Bottom Footer Ribbon -->
-    <g transform="translate(535, 480)">
+    <g transform="translate(535, 522)">
       <line x1="0" y1="0" x2="560" y2="0" stroke="url(#goldRule)" stroke-width="1" />
       
-      <text x="0" y="30" class="sans" font-size="12" font-weight="600" letter-spacing="2" fill="#e8c279">
+      <text x="0" y="24" class="sans" font-size="11.5" font-weight="600" letter-spacing="2" fill="#e8c279">
         #MahathiWedsGopinath
       </text>
 
-      <text x="560" y="30" text-anchor="end" class="sans" font-size="11" font-weight="500" letter-spacing="1.5" fill="#caa568">
+      <text x="560" y="24" text-anchor="end" class="sans" font-size="11" font-weight="500" letter-spacing="1.5" fill="#caa568">
         mahathi-weds-gopinath.invitingyou.top
       </text>
     </g>
