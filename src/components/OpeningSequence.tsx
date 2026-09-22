@@ -133,11 +133,20 @@ export function OpeningSequence({ onFinish }: { onFinish: () => void }) {
         }`}
       />
 
-      {/* Final still, cross-faded in as the lotus film ends */}
+      {/* Final still, cross-faded in as the lotus film ends.
+          Framed from the top so the couple appears standing together,
+          grounded and traditional. */}
       <img
         src={lastFrameAsset.url}
-        alt="Bride and groom feet with lotus motifs"
+        alt="Bride and groom standing together in traditional wedding attire"
         className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ${
+          phase === "still" ? "opacity-100" : "opacity-0"
+        }`}
+        style={{ objectPosition: "50% 12%" }}
+      />
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute inset-0 bg-gradient-to-b from-deep/30 via-transparent to-deep/70 transition-opacity duration-[1200ms] ${
           phase === "still" ? "opacity-100" : "opacity-0"
         }`}
       />

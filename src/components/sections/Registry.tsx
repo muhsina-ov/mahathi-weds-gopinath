@@ -9,11 +9,23 @@ export function Registry() {
   const PAYPAL_EMAIL = "Nukavarapug@gmail.com";
   const PAYPAL_PHONE = "7792762757";
   const PAYPAL_PHONE_FORMATTED = "+1 (779) 276-2757";
+  const PAYPAL_SEND_URL = "https://www.paypal.me/GopinathNukavarapu";
 
-  const handleCopy = (text: string, label: string) => {
-    void navigator.clipboard.writeText(text);
+  const handleCopy = async (text: string, label: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
     setCopiedItem(label);
-    setTimeout(() => setCopiedItem(null), 2500);
+    window.setTimeout(() => setCopiedItem(null), 2500);
   };
 
   return (
@@ -38,11 +50,13 @@ export function Registry() {
             </div>
 
             <span className="inline-block rounded-full border border-gold/40 bg-gold/10 px-4 py-1 text-[0.68rem] uppercase tracking-[0.3em] font-medium text-gold">
-              New Home Fund
+              Our First Home Together
             </span>
 
             <p className="mt-6 font-display text-xl sm:text-2xl leading-relaxed text-gold-soft font-normal">
-              Your presence and prayers are the greatest gift of all. For friends and family who have kindly inquired about a registry, we have created a fund dedicated to building our first home together.
+              Your presence and prayers are the greatest gift of all. For friends and family who
+              have kindly inquired about a registry, we have created a fund dedicated to building
+              our first home together.
             </p>
 
             <div className="mx-auto my-8 h-px w-24 gold-rule" />
@@ -125,7 +139,7 @@ export function Registry() {
               {/* Direct Link to PayPal */}
               <div className="mt-6">
                 <a
-                  href={`https://www.paypal.com/myaccount/transfer/homepage/send`}
+                  href={PAYPAL_SEND_URL}
                   target="_blank"
                   rel="noreferrer"
                   className="group inline-flex w-full items-center justify-center gap-2 rounded-xl border border-gold/60 bg-gradient-to-r from-gold/25 via-gold/15 to-gold/25 px-5 py-3 text-xs uppercase tracking-[0.25em] font-medium text-gold transition-all duration-300 hover:border-gold hover:bg-gold hover:text-deep hover:shadow-[0_0_25px_oklch(0.86_0.12_84/0.4)]"

@@ -53,7 +53,8 @@ export const Route = createFileRoute("/")({
       { property: "og:image:height", content: "630" },
       {
         property: "og:image:alt",
-        content: "Mahathi & Gopinath Wedding Invitation - October 31, 2026 at One Trenton Events & Retreat",
+        content:
+          "Mahathi & Gopinath Wedding Invitation - October 31, 2026 at One Trenton Events & Retreat",
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: SITE_TITLE },
@@ -162,8 +163,8 @@ function Invitation() {
           <Reveal delay={200}>
             <div className="mx-auto mt-8 w-24 gold-rule" />
             <p className="mt-6 text-sm leading-loose text-muted-foreground">
-              With the blessings of Ashok and Sneha &amp; Durga Rao and Ramadevi,
-              we invite you to share in the joy of our wedding.
+              With the cherished blessings of Venkata Rao &amp; Bhavani, and Durga Rao &amp;
+              Ramadevi, with heartfelt gratitude and special blessings from Ashok &amp; Sneha.
             </p>
           </Reveal>
         </div>
@@ -211,13 +212,15 @@ function Invitation() {
 
         <Reveal>
           <div className="mx-auto mt-12 max-w-xl text-center">
-            <p className="font-display text-3xl gold-text sm:text-4xl">One Trenton Events &amp; Retreat</p>
+            <p className="font-display text-3xl gold-text sm:text-4xl">
+              One Trenton Events &amp; Retreat
+            </p>
             <p className="mt-3 text-sm tracking-[0.25em] text-gold-soft/80 uppercase">
               11391 State Hwy 121 · Trenton, TX · 75490
             </p>
             <p className="mt-8 font-display text-lg italic leading-relaxed text-foreground/80">
-              A breathtaking country sanctuary offering open panoramic skies, lush manicured grounds,
-              and serene elegance for our sacred wedding union.
+              A breathtaking country sanctuary offering open panoramic skies, lush manicured
+              grounds, and serene elegance for our sacred wedding union.
             </p>
           </div>
         </Reveal>
