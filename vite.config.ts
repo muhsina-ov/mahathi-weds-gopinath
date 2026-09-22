@@ -56,7 +56,7 @@ const localAssetsPlugin = {
 };
 
 export default defineConfig({
-  plugins: [localAssetsPlugin, tanstackStart(), viteReact(), tailwindcss(), nitro()],
+  plugins: [localAssetsPlugin, tanstackStart({ spa: { enabled: true } }), viteReact(), tailwindcss(), nitro()],
   resolve: {
     tsconfigPaths: true,
   },
