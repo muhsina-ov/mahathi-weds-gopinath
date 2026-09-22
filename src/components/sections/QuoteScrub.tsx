@@ -36,16 +36,23 @@ export function QuoteScrub({ text }: { text: string }) {
     [ok],
   );
 
-  const words = text.split(" ");
+  const lines = text.split("\n");
 
   return (
     <p ref={ref} className="font-display text-2xl leading-relaxed text-foreground/90 sm:text-3xl">
-      {words.map((w, i) => (
-        <span key={i} data-word className="inline-block">
-          {w}
-          {i < words.length - 1 ? " " : ""}
-        </span>
-      ))}
+      {lines.map((line, lineIdx) => {
+        const words = line.split(" ").filter(Boolean);
+        return (
+          <span key={lineIdx} className={lineIdx > 0 ? "block mt-2 sm:mt-3" : "block"}>
+            {words.map((w, i) => (
+              <span key={i} data-word className="inline-block">
+                {w}
+                {i < words.length - 1 ? "\u00A0" : ""}
+              </span>
+            ))}
+          </span>
+        );
+      })}
     </p>
   );
 }

@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Home, ExternalLink, Copy, Check, Heart } from "lucide-react";
+import { Home, ExternalLink, Copy, Check, Heart, Gift } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 
 export function Registry() {
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
 
+  const AMAZON_REGISTRY_URL = "https://www.amazon.com/wedding/guest-view/1PFKKW7K51D2N";
   const PAYPAL_EMAIL = "Nukavarapug@gmail.com";
   const PAYPAL_PHONE = "7792762757";
   const PAYPAL_PHONE_FORMATTED = "+1 (779) 276-2757";
@@ -39,27 +40,58 @@ export function Registry() {
       <div className="relative mx-auto max-w-3xl text-center">
         <SectionHeader
           eyebrow="Wedding Registry"
-          title="OUR FIRST HOME TOGETHER"
+          title="GIFTS & BLESSINGS"
           className="mx-auto max-w-xl"
         />
 
         <Reveal delay={150}>
           <div className="mt-12 rounded-[1.75rem] border border-gold/30 bg-deep/55 p-8 sm:p-12 shadow-[0_30px_90px_-30px_oklch(0.2_0.1_30/0.8)] backdrop-blur-md">
             <div className="mx-auto mb-6 grid h-16 w-16 place-items-center rounded-full border border-gold/40 bg-gold/10 text-gold-soft shadow-[0_0_20px_rgba(225,190,120,0.15)]">
-              <Home className="h-7 w-7 stroke-[1.5]" />
+              <Gift className="h-7 w-7 stroke-[1.5]" />
             </div>
 
-            <span className="inline-block rounded-full border border-gold/40 bg-gold/10 px-4 py-1 text-[0.68rem] uppercase tracking-[0.3em] font-medium text-gold">
-              Our First Home Together
-            </span>
-
-            <p className="mt-6 font-display text-xl sm:text-2xl leading-relaxed text-gold-soft font-normal">
+            <p className="font-display text-xl sm:text-2xl leading-relaxed text-gold-soft font-normal">
               Your presence and prayers are the greatest gift of all. For friends and family who
-              have kindly inquired about a registry, we have created a fund dedicated to building
-              our first home together.
+              have kindly inquired about a registry, we have curated a wedding wish list and also
+              established a fund for our first home together.
             </p>
 
-            <div className="mx-auto my-8 h-px w-24 gold-rule" />
+            {/* Amazon Registry Primary Card */}
+            <div className="mx-auto mt-10 max-w-md rounded-2xl border border-gold/40 bg-gradient-to-b from-card/85 to-card/55 p-6 text-center shadow-lg transition-all duration-300 hover:border-gold/70">
+              <div className="flex items-center justify-between border-b border-gold/20 pb-3">
+                <span className="font-display text-lg text-foreground font-semibold">
+                  Amazon Wedding Registry
+                </span>
+                <span className="rounded-full border border-gold/30 bg-gold/10 px-2.5 py-0.5 text-[0.62rem] uppercase tracking-wider text-gold-soft font-medium">
+                  Official Wishlist
+                </span>
+              </div>
+
+              <p className="mt-4 text-xs text-muted-foreground leading-relaxed">
+                Explore our selected registry items on Amazon for our home and kitchen.
+              </p>
+
+              <div className="mt-5">
+                <a
+                  href={AMAZON_REGISTRY_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-xl border border-gold/70 bg-gradient-to-r from-gold/30 via-gold/20 to-gold/30 px-5 py-3.5 text-xs uppercase tracking-[0.25em] font-medium text-gold transition-all duration-300 hover:border-gold hover:bg-gold hover:text-deep hover:shadow-[0_0_25px_oklch(0.86_0.12_84/0.4)]"
+                >
+                  <span>View Amazon Registry</span>
+                  <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              </div>
+            </div>
+
+            {/* Subtle separator */}
+            <div className="relative mx-auto my-10 flex max-w-xs items-center gap-4">
+              <span className="h-px flex-1 bg-gold/25" />
+              <span className="text-[0.6rem] uppercase tracking-[0.3em] text-gold-soft/70 font-sans">
+                OR
+              </span>
+              <span className="h-px flex-1 bg-gold/25" />
+            </div>
 
             {/* PayPal Details Card */}
             <div className="mx-auto max-w-md rounded-2xl border border-gold/30 bg-card/75 p-6 text-left shadow-inner">

@@ -47,14 +47,14 @@ export function HeroParallax() {
         alt=""
         aria-hidden
         className="absolute inset-0 h-full w-full object-cover opacity-25"
-        style={{ transform: "scale(1.06)", objectPosition: "50% 30%" }}
+        style={{ transform: "scale(1.06)", objectPosition: "50% 40%" }}
       />
       <img
         ref={topRef}
         src={HERO_SRC}
-        alt="Bride and groom hands over a sacred diya, framed by warm light"
+        alt="Bride and groom hands clasped in traditional wedding attire"
         className="absolute inset-0 h-full w-full object-cover"
-        style={{ transform: "scale(1.06)", objectPosition: "50% 30%" }}
+        style={{ transform: "scale(1.06)", objectPosition: "50% 40%" }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-deep/10 via-transparent to-deep/85" />
     </div>

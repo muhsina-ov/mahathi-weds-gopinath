@@ -159,7 +159,11 @@ function Invitation() {
       <section data-section="blessing" className="relative px-6 py-28">
         {opened && <RichPetals type="petals" count={7} />}
         <div className="relative mx-auto max-w-2xl text-center">
-          <QuoteScrub text="“Where two souls meet, the lotus blooms — and every path becomes a garden.”" />
+          <QuoteScrub
+            text={
+              "“Two hearts, One thread\nSeven vows, seven steps, and a lifetime of ordinary mornings made beautiful.”"
+            }
+          />
           <Reveal delay={200}>
             <div className="mx-auto mt-8 w-24 gold-rule" />
             <p className="mt-6 text-sm leading-loose text-muted-foreground">

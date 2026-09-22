@@ -1,5 +1,13 @@
 import { useRef, useState } from "react";
-import { CalendarPlus, MessageCircle, Phone, Check, Copy } from "lucide-react";
+import {
+  CalendarPlus,
+  CalendarCheck,
+  ExternalLink,
+  MessageCircle,
+  Phone,
+  Check,
+  Copy,
+} from "lucide-react";
 
 import frameAsset from "@/assets/r1.png.asset.json";
 import coupleAsset from "@/assets/r2.png.asset.json";
@@ -61,6 +69,8 @@ const RSVP_CONTACTS = [
       "https://wa.me/15135456104?text=Hi,%20I%20would%20love%20to%20RSVP%20for%20the%20Wedding%20Ceremony%20of%20Mahathi%20%26%20Gopinath!",
   },
 ];
+
+const RSVP_GOOGLE_CALENDAR_URL = "https://calendar.app.google/BuJBJSVSjznKcgG3A";
 
 function fmtIcsStamp(iso: string) {
   const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/);
@@ -131,31 +141,42 @@ export function Celebrations() {
         {/* RSVP Section */}
         <Reveal delay={250}>
           <div className="mx-auto mt-12 max-w-2xl rounded-2xl border border-gold/30 bg-deep/60 p-6 sm:p-8 backdrop-blur-sm text-center">
-            <div className="mx-auto mb-4 grid h-12 w-12 place-items-center rounded-full border border-gold/40 bg-gold/10 text-gold-soft">
-              <MessageCircle className="h-6 w-6 stroke-[1.5]" />
+            <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-full border border-gold/40 bg-gold/10 text-gold-soft shadow-[0_0_20px_rgba(225,190,120,0.15)]">
+              <CalendarCheck className="h-7 w-7 stroke-[1.5]" />
             </div>
             <h3 className="font-display text-2xl sm:text-3xl gold-text">
               RSVP for Wedding
             </h3>
             <p className="mx-auto mt-2 max-w-lg text-xs sm:text-sm leading-relaxed text-foreground/80">
-              Please confirm your presence via WhatsApp so we can gladly prepare for your warm welcome and hospitality.
+              Please confirm your presence so we can gladly prepare for your warm welcome and hospitality.
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a
+                href={RSVP_GOOGLE_CALENDAR_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-2.5 rounded-full border border-gold/70 bg-gradient-to-r from-gold/30 via-gold/20 to-gold/30 px-8 py-3.5 text-xs uppercase tracking-[0.25em] font-medium text-gold transition-all duration-300 hover:border-gold hover:bg-gold hover:text-deep hover:shadow-[0_0_25px_oklch(0.86_0.12_84/0.4)]"
+              >
+                <CalendarCheck className="h-4 w-4 transition-transform group-hover:scale-110" />
+                <span>RSVP with Google Calendar</span>
+                <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+
               <Dialog>
                 <DialogTrigger asChild>
                   <button
                     type="button"
-                    className="inline-flex items-center gap-2 rounded-full border border-gold/60 bg-gradient-to-r from-gold/25 via-gold/15 to-gold/25 px-6 py-3 text-xs uppercase tracking-[0.25em] font-medium text-gold transition-all duration-300 hover:border-gold hover:bg-gold hover:text-deep hover:shadow-[0_0_25px_oklch(0.86_0.12_84/0.35)] cursor-pointer"
+                    className="inline-flex items-center gap-2 rounded-full border border-gold/35 bg-gold/5 px-6 py-3.5 text-xs uppercase tracking-[0.2em] font-medium text-gold-soft hover:bg-gold/15 transition-all cursor-pointer"
                   >
                     <MessageCircle className="h-4 w-4" />
-                    RSVP via WhatsApp
+                    <span>WhatsApp / Contact</span>
                   </button>
                 </DialogTrigger>
                 <DialogContent className="border-gold/35 bg-deep text-foreground sm:max-w-md">
                   <DialogHeader>
                     <DialogTitle className="font-display text-2xl gold-text">
-                      RSVP for Wedding
+                      RSVP Contact Desk
                     </DialogTitle>
                     <DialogDescription className="text-xs text-muted-foreground">
                       Reach out directly on WhatsApp to let us know you'll be joining our special day!
@@ -220,15 +241,6 @@ export function Celebrations() {
                   </div>
                 </DialogContent>
               </Dialog>
-
-              <a
-                href="https://wa.me/17792762757?text=Hi%20Gopinath,%20I%20would%20love%20to%20RSVP%20for%20the%20Wedding%20Ceremony%20of%20Mahathi%20%26%20Gopinath!"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-gold/35 bg-gold/5 px-5 py-3 text-xs tracking-wider text-gold-soft hover:bg-gold/15 transition-colors"
-              >
-                <span>Direct WhatsApp: +1 (779) 276-2757</span>
-              </a>
             </div>
           </div>
         </Reveal>
