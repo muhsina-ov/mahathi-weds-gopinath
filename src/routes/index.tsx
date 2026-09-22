@@ -265,7 +265,7 @@ function Invitation() {
           <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold/45" />
         </div>
         <div className="relative mx-auto mt-12 flex max-w-3xl flex-col items-center justify-between gap-4 border-t border-gold/10 pt-6 text-[0.55rem] uppercase tracking-[0.3em] text-foreground/35 sm:flex-row">
-          <span>31 October 2026 · Trenton, Texas</span>
+          <span>10.31.2026 · Trenton, Texas</span>
           <span>#MahathiWedsGopinath</span>
         </div>
         <a

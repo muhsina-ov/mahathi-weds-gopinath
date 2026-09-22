@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 type Event = {
   name: string;
-  date: string; // human-readable, e.g. "31 October 2026"
+  date: string; // human-readable, e.g. "10.31.2026"
   time: string; // e.g. "11:52 AM"
   place: string;
   note: string;
@@ -26,13 +26,13 @@ type Event = {
 const EVENTS: Event[] = [
   {
     name: "Wedding Ceremony",
-    date: "31 October 2026",
-    time: "Muhurtham 11:52 AM",
+    date: "10.31.2026",
+    time: "10 AM to 2 PM · Muhurtham 11:52 AM",
     place: "One Trenton Events & Retreat Mandap",
     note: "Sacred vows, auspicious rituals, and saat phere surrounded by divine blessings, family, and loved ones.",
     attire: "Traditional Indian Attire",
-    start: "2026-10-31T10:30:00-05:00",
-    end: "2026-10-31T14:30:00-05:00",
+    start: "2026-10-31T10:00:00-05:00",
+    end: "2026-10-31T14:00:00-05:00",
     slug: "wedding-ceremony",
   },
 ];

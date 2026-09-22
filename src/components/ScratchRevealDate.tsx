@@ -91,7 +91,7 @@ export function ScratchRevealDate() {
           />
           <div>
             <p className="font-display text-4xl tracking-[0.12em] text-gold-soft sm:text-6xl">
-              31 · 10 · 2026
+              10.31.2026
             </p>
             <p className="mt-2 text-[0.58rem] uppercase tracking-[0.45em] text-gold/75">
               Trenton, Texas · Muhurtham 11:52 AM
