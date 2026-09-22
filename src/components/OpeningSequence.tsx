@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import coverAsset from "@/assets/r3.png.asset.json";
 import openerAsset from "@/assets/openr.mp4.asset.json";
-import lotusAsset from "@/assets/lotus.mp4.asset.json";
 import lastFrameAsset from "@/assets/last_frame.jpeg.asset.json";
 
 import { CoverZoom } from "./CoverZoom";
@@ -10,17 +9,13 @@ import { HoldToOpen } from "./HoldToOpen";
 import { SkipProgress } from "./SkipProgress";
 import { TapRipple } from "./TapRipple";
 
-type Phase = "cover" | "opener" | "lotus" | "still" | "done";
-
-/** How long before the opener ends we begin the cross-fade (seconds). */
-const FADE_LEAD = 2.4;
+type Phase = "cover" | "opener" | "still" | "done";
 
 export function OpeningSequence({ onFinish }: { onFinish: () => void }) {
   const [phase, setPhase] = useState<Phase>("cover");
   const [hidden, setHidden] = useState(false);
   const [tap, setTap] = useState<{ x: number; y: number; id: number } | null>(null);
   const openerRef = useRef<HTMLVideoElement>(null);
-  const lotusRef = useRef<HTMLVideoElement>(null);
   const tapCounter = useRef(0);
 
   const finish = useCallback(() => {
@@ -42,32 +37,6 @@ export function OpeningSequence({ onFinish }: { onFinish: () => void }) {
     }
   }, [phase, finish]);
 
-  // Cross-fade opener -> lotus near the end of the opener.
-  useEffect(() => {
-    const v = openerRef.current;
-    if (!v || phase !== "opener") return;
-    const onTime = () => {
-      if (!v.duration) return;
-      if (v.duration - v.currentTime <= FADE_LEAD) {
-        setPhase("lotus");
-        const l = lotusRef.current;
-        if (l) {
-          l.currentTime = 0;
-          void l.play().catch(() => {
-            l.muted = true;
-            void l.play().catch(() => finish());
-          });
-        }
-      }
-    };
-    v.addEventListener("timeupdate", onTime);
-    v.addEventListener("ended", onTime);
-    return () => {
-      v.removeEventListener("timeupdate", onTime);
-      v.removeEventListener("ended", onTime);
-    };
-  }, [phase, finish]);
-
   // Skip on Escape / after a stall.
   useEffect(() => {
     if (phase === "cover" || phase === "done") return;
@@ -85,7 +54,6 @@ export function OpeningSequence({ onFinish }: { onFinish: () => void }) {
 
   const showCover = phase === "cover";
   const showOpener = phase === "opener";
-  const showLotus = phase === "lotus";
 
   return (
     <div
@@ -117,23 +85,13 @@ export function OpeningSequence({ onFinish }: { onFinish: () => void }) {
         src={openerAsset.url}
         playsInline
         preload="auto"
+        onEnded={finish}
         className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-[2000ms] ${
           showOpener ? "opacity-100" : "opacity-0"
         }`}
       />
 
-      <video
-        ref={lotusRef}
-        src={lotusAsset.url}
-        playsInline
-        preload="auto"
-        onEnded={finish}
-        className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-[2000ms] ${
-          showLotus ? "opacity-100" : "opacity-0"
-        }`}
-      />
-
-      {/* Final still, cross-faded in as the lotus film ends.
+      {/* Final still, cross-faded in as the opener film ends.
           Framed from the top so the couple appears standing together,
           grounded and traditional. */}
       <img
