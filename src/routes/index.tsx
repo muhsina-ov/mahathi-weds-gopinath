@@ -20,7 +20,6 @@ import { HeroParallax } from "@/components/sections/HeroParallax";
 import { LetterH1 } from "@/components/sections/LetterH1";
 import { QuoteScrub } from "@/components/sections/QuoteScrub";
 import { SectionHeader } from "@/components/sections/SectionHeader";
-import { Registry } from "@/components/sections/Registry";
 import { VenueMap } from "@/components/sections/VenueMap";
 import { ScrollTrigger, useGSAP } from "@/lib/motion";
 
@@ -83,7 +82,6 @@ const SECTIONS: SectionDef[] = [
   { id: "countdown", label: "Countdown" },
   { id: "celebrations", label: "Events" },
   { id: "venue", label: "Venue" },
-  { id: "registry", label: "Registry" },
   { id: "accommodations", label: "Stay" },
 ];
 
@@ -235,9 +233,6 @@ function Invitation() {
           </div>
         </Reveal>
       </section>
-
-      {/* Registry — Gifts & Blessings (Moved above Accommodations) */}
-      <Registry />
 
       {/* Accommodations — 5 curated Airbnbs nearby */}
       <Accommodations />
