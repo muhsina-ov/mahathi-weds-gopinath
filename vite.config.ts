@@ -55,8 +55,19 @@ const localAssetsPlugin = {
   },
 };
 
+// Explicitly enforce node-server preset so that Cloudflare CI build does not
+// auto-switch to cloudflare-module preset, which spawns an infinite `wrangler dev`
+// preview server during prerendering and crashes on GSAP's global setTimeout.
+process.env.NITRO_PRESET = "node-server";
+
 export default defineConfig({
-  plugins: [localAssetsPlugin, tanstackStart({ spa: { enabled: true } }), viteReact(), tailwindcss(), nitro()],
+  plugins: [
+    localAssetsPlugin,
+    tanstackStart({ spa: { enabled: true } }),
+    viteReact(),
+    tailwindcss(),
+    nitro({ preset: "node-server" }),
+  ],
   resolve: {
     tsconfigPaths: true,
   },
